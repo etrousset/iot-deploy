@@ -1,0 +1,23 @@
+{
+  "id": {
+    "type": "keyword"
+  },
+  "friendly_name": {
+    "type": "keyword"
+  },
+  "sensor_type": {
+    "type": "keyword"
+  },
+  "location": {
+    "type": "keyword"
+  },
+  "sub_loc": {
+    "type": "keyword"
+  },
+  "geo_loc": {
+    "type": "geo_point"
+  },
+  "user_id": {
+    "type": "keyword"
+  }
+}

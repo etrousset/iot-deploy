@@ -1,0 +1,11 @@
+{
+  "sensor_id": {
+    "type": "keyword"
+  },
+  "type": {
+    "type": "keyword"
+  },
+  "value": {
+    "type": "double"
+  }
+}
