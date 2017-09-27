@@ -5,7 +5,7 @@
   "friendly_name": {
     "type": "keyword"
   },
-  "sensor_type": {
+  "device_type": {
     "type": "keyword"
   },
   "location": {

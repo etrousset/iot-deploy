@@ -9,8 +9,6 @@ const rl = Readline.createInterface({
   output: process.stdout
 })
 
-rl.on('close', () => console.log('readline closed'));
-
 var kuzzle = new Kuzzle(k_cfg.host, {defaultIndex: k_cfg.index},
   () => {
     kuzzle.loginPromise('local', k_cfg.user, '1d')
@@ -19,8 +17,7 @@ var kuzzle = new Kuzzle(k_cfg.host, {defaultIndex: k_cfg.index},
           rl.question('User name: ', user_name => resolve(user_name))
         })
       })
-      .then(uname => console.log('uname = ', uname))
-      //.then(user_name => kuzzle.collection('users').createDocumentPromise({name: user_name}))
-      .catch()
-      .then(() => {rl.close(); kuzzle.disconnect(); process.exit(0); console.log('Done')})
+      .then(user_name => kuzzle.collection('users').createDocumentPromise({name: user_name}))
+      .catch(err => console.log(err))
+      .then((res) => {console.log(res);rl.close(); kuzzle.disconnect()})
   })

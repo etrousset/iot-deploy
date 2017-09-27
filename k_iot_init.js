@@ -5,7 +5,7 @@ var config = require('./config/default.json')
 var kuzzle_cfg = config.kuzzle
 
 const IOT_COLLECTIONS =
-            ['users', 'fw-updates', 'sensor-states', 'sensor-info']
+            ['users', 'fw-updates', 'device-state', 'device-info']
 
 var kuzzle = new Kuzzle('localhost', {defaultIndex: kuzzle_cfg.index}, () => {
   kuzzle.loginPromise('local', kuzzle_cfg.user, '1d')
