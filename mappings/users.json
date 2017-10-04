@@ -1,5 +1,11 @@
 {
-  "name": {
+  "forname": {
+    "type": "keyword"
+  },
+  "surname": {
+    "type": "keyword"
+  },
+  "email": {
     "type": "keyword"
   }
 }

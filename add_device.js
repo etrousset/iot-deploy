@@ -84,7 +84,7 @@ var kuzzle = new Kuzzle('localhost', {defaultIndex: kuzzle_cfg.index}, () => {
       searchResult.getDocuments()
         .forEach(doc => users.push(
           {
-            name: util.format('%s - %s', doc.id, 10, doc.content.name),
+            name: util.format('%s - %s %s (%s)', doc.id, doc.content.forname, doc.content.surname, doc.content.email),
             uname: doc.content.name,
             id: doc.id
           }

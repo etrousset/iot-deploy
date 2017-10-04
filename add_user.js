@@ -1,23 +1,40 @@
 var Kuzzle = require('kuzzle-sdk')
 var config = require('./config/default.json')
-var Readline = require('readline')
-
+var Enquirer = require('enquirer')
 var k_cfg = config.kuzzle
 
-const rl = Readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-})
+var enquirer = new Enquirer()
+
+var user_questions = [
+  {
+    name: 'forname',
+    message: 'Forname: ',
+    default: 'John'
+  },
+  {
+    name: 'surname',
+    message: 'Surname: ',
+    default: 'Doe'
+  },
+  {
+    name: 'email',
+    message: 'email: ',
+    default: 'john.doe@kuzzle.io'
+  }  
+]
 
 var kuzzle = new Kuzzle(k_cfg.host, {defaultIndex: k_cfg.index},
   () => {
     kuzzle.loginPromise('local', k_cfg.user, '1d')
-      .then( () => {
-        return new Promise(resolve => {
-          rl.question('User name: ', user_name => resolve(user_name))
-        })
+      .then( () => enquirer.ask(user_questions))
+      .then(user_data => {
+        kuzzle.collection('users').createDocumentPromise(
+          {
+            forname: user_data.forname,
+            surname: user_data.surname,
+            email: user_data.email
+          })
       })
-      .then(user_name => kuzzle.collection('users').createDocumentPromise({name: user_name}))
       .catch(err => console.log(err))
-      .then((res) => {console.log(res);rl.close(); kuzzle.disconnect()})
+      .then(() => kuzzle.disconnect())
   })
