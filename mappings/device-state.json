@@ -1,11 +1,12 @@
 {
-  "sensor_id": {
+  "device_id": {
     "type": "keyword"
   },
-  "type": {
+  "device_type": {
     "type": "keyword"
   },
-  "value": {
-    "type": "double"
+  "state": {
+    "properties": {
+    }
   }
 }

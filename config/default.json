@@ -2,7 +2,7 @@
   "kuzzle" : {
     "host" : "localhost",
     "port": "7512",
-    "index": "iot-test-3",
+    "index": "iot-3",
     "user": {
       "username": "etrousset",
       "password": "rootroot"
