@@ -4,8 +4,8 @@
     "port": "7512",
     "index": "iot",
     "user": {
-      "username": "etrousset",
-      "password": "rootroot"
+      "username": "an_admin_user",
+      "password": "an_admin_user_pwd"
 
     }
   }
