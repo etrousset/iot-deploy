@@ -8,21 +8,17 @@ enquirer.register('radio', require('prompt-radio'))
 enquirer.register('list', require('prompt-list'))
 enquirer.register('confirm', require('prompt-confirm'))
 
-
-
 var kuzzle_cfg = config.kuzzle
 var kuzzle = new Kuzzle('localhost', {defaultIndex: kuzzle_cfg.index}, () => {
   kuzzle.loginPromise('local', kuzzle_cfg.user, '1d')
     .then(() => {
-      kuzzle.collection('devices', 'iot').subscribe({equals: {device_id:'30AEA400C595' }}, {subscribeToSelf: false}, (err, res) => {
-        if(res.document.content.value == 1.0) {
+      kuzzle.collection('device-state', 'iot-3').subscribe({equals: {device_id:'30AEA400C595' }}, {subscribeToSelf: false}, (err, res) => {
+        if(res.document.content.state.motion == 1.0) {
           console.log('Motion detected => Turning light on')
-          kuzzle.collection('devices', 'iot').document({device_id: '30AEA480838D', state: { on: true}}).publish()
-          // .catch(()=> console.log('Failed to publish light document'))
+          kuzzle.collection('device-state', 'iot-3').document({device_id: '240AC410A8F5', state: { on: true}}).publish()
         } else {
           console.log('No more motion detected => Turning light off')
-          kuzzle.collection('devices', 'iot').document({device_id: '30AEA480838D', state: { on: false}}).publish()
-          // .catch(()=> console.log('Failed to publish light document'))
+          kuzzle.collection('device-state', 'iot-3').document({device_id: '240AC410A8F5', state: { on: false}}).publish()
         }
       })
     }) 
