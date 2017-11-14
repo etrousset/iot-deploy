@@ -19,13 +19,15 @@ This work is a early stage WIP
 ### Device state mapping
 ```javascript
 {
-  "device_id" : "an UID that identify the device the state represents",
-  "device_type": "An ID that identity the kind of device at hardware level",
-  "state" : {
-      "Set of properties that represents the current state of the device."
+  "device_id" : "string_uid",          // an UID that identify the device the state represents
+  "device_type": "string_dev_type_id", // An ID that identity the kind of device at hardware level
+  "state" : {                          // Set of properties that represents the current state of the device.
+    "prop_1" : value1,
+    "prop_2" : value2,
+    .
+    .
+    .
+    "prop_N" : valueN,
       }
 }
 ```
-### Other collection
-
-Other collection are free to use for now, this might change...
