@@ -17,7 +17,7 @@ This work is a early stage WIP
 
 
 ### Device state mapping
-```
+```javascript
 {
   "device_id" : "an UID that identify the device the state represents",
   "device_type": "An ID that identity the kind of device at hardware level",
