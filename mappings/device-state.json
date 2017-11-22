@@ -5,6 +5,9 @@
   "device_type": {
     "type": "keyword"
   },
+  "is_partial": {
+    "type": "boolean"
+  },
   "state": {
     "properties": {
     }
