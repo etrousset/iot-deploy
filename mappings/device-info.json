@@ -1,5 +1,5 @@
 {
-  "id": {
+  "device_id": {
     "type": "keyword"
   },
   "friendly_name": {
@@ -17,7 +17,7 @@
   "geo_loc": {
     "type": "geo_point"
   },
-  "user_id": {
+  "owner": {
     "type": "keyword"
   }
 }
